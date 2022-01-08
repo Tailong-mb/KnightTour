@@ -1,6 +1,4 @@
 import java.util.Scanner;
-import java.util.Arrays;
-import java.util.List;
 
 public class KnightProblem {
     //Attributes
@@ -13,6 +11,7 @@ public class KnightProblem {
 
     //Deplacement du cavalier possible
     private final static int[][] knightPossibleMove = {{1,-2},{2,-1},{2,1},{1,2},{-1,2},{-2,1},{-2,-1},{-1,-2}};
+
     //Constructeur
     public KnightProblem(int Xposition, int Yposition, int tablelenght){
         this.knightX = Xposition;
