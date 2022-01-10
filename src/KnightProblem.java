@@ -58,6 +58,6 @@ public class KnightProblem {
      * Trouve les solutions du problème du cavalier
      */
     public void findKnightSolution(){
-
+        //A remplir
     }
 }
