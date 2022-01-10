@@ -96,7 +96,7 @@ public class KnightProblem {
     public void backToLastPosition(){
         Position lastPosition = this.lastPosition();
         if(lastPosition.getX() == -1){
-            throw new IllegalArgumentException("Impossibilitée de revenir en arrière");
+            throw new IllegalArgumentException("Impossibile de revenir en arrière");
         }else{
         this.chessBoard[this.position.getX()][this.position.getY()] = -1;
         this.position.setX(lastPosition.getX());
@@ -111,7 +111,7 @@ public class KnightProblem {
     public int getNumberOfSolution(){
         return this.numberOfSolution;
     }
-    
+
     /**
      * Trouve les solutions du problème du cavalier
      */
