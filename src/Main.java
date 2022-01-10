@@ -40,7 +40,7 @@ public class Main {
         if(knight.getNumberOfSolution() != 0)
         {
         System.out.println("Voici l'une des solutions trouvee :");
-        knight.afficheChessBoard();
+        knight.printChessBoard();
         }
         System.out.println("Nombre de solution trouve : ");
         System.out.println(knight.getNumberOfSolution());

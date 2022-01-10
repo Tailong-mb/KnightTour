@@ -18,8 +18,7 @@ public class KnightProblem {
                                                                         KnightMovePossibilities.MOVECINQ,
                                                                         KnightMovePossibilities.MOVESIX,
                                                                         KnightMovePossibilities.MOVESEPT,
-                                                                        KnightMovePossibilities.MOVEHUIT);
-                                                                        
+                                                                        KnightMovePossibilities.MOVEHUIT);                                                                       
     //Constructeur
     public KnightProblem(Position position, int tablelenght){
         this.position = new Position(position.getX(),position.getY());
@@ -60,7 +59,7 @@ public class KnightProblem {
     /**
      * Affiche toutes les valeurs du tableau
      */
-    public void afficheChessBoard(){
+    public void printChessBoard(){
         for(int i = 0; i < this.tableLenght; i++){
             for(int j = 0; j < this.tableLenght; j++){
                 System.out.print(this.chessBoard[i][j]);
@@ -68,7 +67,29 @@ public class KnightProblem {
                 System.out.print("\n");
         }
     }
-
+    
+    /**
+     * Cherche la dernière position du cavalier
+     * @return une Position qui correspond à celle précédente du cavalier s'il n'y en a 
+     * pas alors elle retourne une Position(-1,-1)
+     */
+    public Position lastPosition(){
+        Position result = new Position(-1,-1);
+        if(this.count == 1){
+            return result;
+        }else{
+            for(int i = 0; i < this.tableLenght; i++){
+                for(int j = 0; j < this.tableLenght; j++){
+                    if(this.chessBoard[i][j] == (count-1)){
+                        result.setX(i);
+                        result.setY(j);
+                    }
+                }
+            }
+            return result;
+        }
+        
+    }
     /**
      * @return La valeur de l'attribut numberOfSolution
      */
