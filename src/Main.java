@@ -33,11 +33,15 @@ public class Main {
         }
         Position position = new Position(knightX,knightY);
         KnightProblem knight = new KnightProblem(position, tablelenght);
-        
+
         //Trouver les cavaliers
         knight.findKnightSolution();
+
+        if(knight.getNumberOfSolution() != 0)
+        {
         System.out.println("Voici l'une des solutions trouvee :");
         knight.afficheChessBoard();
+        }
         System.out.println("Nombre de solution trouve : ");
         System.out.println(knight.getNumberOfSolution());
     }

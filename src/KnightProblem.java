@@ -56,7 +56,7 @@ public class KnightProblem {
         }
         return result;
     }
-    
+
     /**
      * Affiche toutes les valeurs du tableau
      */
@@ -80,6 +80,13 @@ public class KnightProblem {
      * Trouve les solutions du problème du cavalier
      */
     public void findKnightSolution(){
+        //A remplir
+    }
+
+    /**
+     * Trouve une solution du problème du cavalier
+     */
+    public void findOneKnightSolution(){
         //A remplir
     }
 }
