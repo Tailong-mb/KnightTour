@@ -31,18 +31,12 @@ public class Main {
                 sc.close();
             }
         }
-        Position position = new Position(knightX,knightY);
+        Position position = new Position(knightY-1,knightX-1);
         KnightProblem knight = new KnightProblem(position, tablelenght);
 
         //Trouver les cavaliers
         knight.findKnightSolution();
+        System.out.print(knight.getNumberOfSolution());
 
-        if(knight.getNumberOfSolution() != 0)
-        {
-        System.out.println("Voici l'une des solutions trouvee :");
-        knight.printChessBoard();
-        }
-        System.out.println("Nombre de solution trouve : ");
-        System.out.println(knight.getNumberOfSolution());
     }
 }
