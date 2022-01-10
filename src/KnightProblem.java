@@ -46,7 +46,7 @@ public class KnightProblem {
         for(KnightMovePossibilities test : this.possibleMoves){
             finalX = this.position.getX() + test.getX();
             finalY = this.position.getY() + test.getY();
-            if(finalX < 0 || finalX >this.tableLenght || finalY < 0 || finalY > this.tableLenght || this.chessBoard[finalX][finalY] != -1){
+            if(finalX < 0 || finalX >this.tableLenght || finalY < 0 || finalY > this.tableLenght || this.chessBoard[finalY][finalX] != -1){
                 continue;
             } else{
                 Position addPos = new Position(finalX,finalY);
@@ -80,23 +80,38 @@ public class KnightProblem {
         }else{
             for(int i = 0; i < this.tableLenght; i++){
                 for(int j = 0; j < this.tableLenght; j++){
-                    if(this.chessBoard[i][j] == (count-1)){
-                        result.setX(i);
-                        result.setY(j);
+                    if(this.chessBoard[i][j] == (this.count-1)){
+                        result.setX(j);
+                        result.setY(i);
                     }
                 }
             }
             return result;
         }
-        
     }
+
+    /**
+     * Ne prend aucun paramètre, bouge le cavalie à sa position précédente.
+     */
+    public void backToLastPosition(){
+        Position lastPosition = this.lastPosition();
+        if(lastPosition.getX() == -1){
+            throw new IllegalArgumentException("Impossibilitée de revenir en arrière");
+        }else{
+        this.chessBoard[this.position.getX()][this.position.getY()] = -1;
+        this.position.setX(lastPosition.getX());
+        this.position.setY(lastPosition.getY());
+        this.count -= 1;
+        }
+    }
+
     /**
      * @return La valeur de l'attribut numberOfSolution
      */
     public int getNumberOfSolution(){
         return this.numberOfSolution;
     }
-
+    
     /**
      * Trouve les solutions du problème du cavalier
      */
