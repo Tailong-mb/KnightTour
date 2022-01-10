@@ -31,7 +31,8 @@ public class Main {
                 sc.close();
             }
         }
-        KnightProblem knight = new KnightProblem(knightX, knightY, tablelenght);
+        Position position = new Position(knightX,knightY);
+        KnightProblem knight = new KnightProblem(position, tablelenght);
         
         //Trouver les cavaliers
         knight.findKnightSolution();

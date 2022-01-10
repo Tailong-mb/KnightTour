@@ -1,13 +1,13 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.ArrayList;
 
 public class KnightProblem {
     //Attributes
-    private int knightX;
-    private int knightY;
+    private Position position;
     private int tableLenght;
     private int [][] chessBoard;
-    private int position;
+    private int count;
     private int numberOfSolution;
 
     //Deplacement du cavalier possible
@@ -21,9 +21,8 @@ public class KnightProblem {
                                                                         KnightMovePossibilities.MOVEHUIT);
                                                                         
     //Constructeur
-    public KnightProblem(int Xposition, int Yposition, int tablelenght){
-        this.knightX = Xposition;
-        this.knightY = Yposition;
+    public KnightProblem(Position position, int tablelenght){
+        this.position = new Position(position.getX(),position.getY());
         this.tableLenght = tablelenght;
         this.chessBoard = new int[tablelenght][tablelenght];
         for(int i = 0; i < this.tableLenght; i++){
@@ -31,10 +30,33 @@ public class KnightProblem {
                 this.chessBoard[i][j] = -1; 
             }
         }
-        this.position = 1;
+        this.count = 1;
         this.numberOfSolution = 0;
     }
 
+    //Methodes
+
+    /**
+     * Methode qui vérifie tous les mouvements possibles du cavalier.
+     * @return a List with all possible positions
+     */
+    public List<Position> deplacementPossible(){
+        List<Position> result = new ArrayList<Position>();
+        int finalX;
+        int finalY;
+        for(KnightMovePossibilities test : this.possibleMoves){
+            finalX = this.position.getX() + test.getX();
+            finalY = this.position.getY() + test.getY();
+            if(finalX < 0 || finalX >this.tableLenght || finalY < 0 || finalY > this.tableLenght || this.chessBoard[finalX][finalY] != -1){
+                continue;
+            } else{
+                Position addPos = new Position(finalX,finalY);
+                result.add(addPos);
+            }
+        }
+        return result;
+    }
+    
     /**
      * Affiche toutes les valeurs du tableau
      */
