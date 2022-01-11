@@ -3,14 +3,14 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class KnightProblem {
-    //Attributes
+    //Attributs
     private Position position;
     private int tableLenght;
     private int [][] chessBoard;
     private int count;
     private int numberOfSolution;
 
-    //Deplacement du cavalier possible
+    //Deplacement du cavalier possible :
     private List<KnightMovePossibilities> possibleMoves = Arrays.asList(KnightMovePossibilities.MOVEUN, 
                                                                         KnightMovePossibilities.MOVEDEUX,
                                                                         KnightMovePossibilities.MOVETROIS,
@@ -21,6 +21,9 @@ public class KnightProblem {
                                                                         KnightMovePossibilities.MOVEHUIT);                                                                       
     //Constructeur
     public KnightProblem(Position position, int tablelenght){
+        if(position.getX() >= tablelenght || position.getY() >= tablelenght){
+            throw new IllegalArgumentException("Out of the chessboard");
+        }
         this.position = new Position(position.getX(),position.getY());
         this.tableLenght = tablelenght;
         this.chessBoard = new int[tablelenght][tablelenght];
@@ -38,7 +41,7 @@ public class KnightProblem {
 
     /**
      * Methode qui vérifie tous les mouvements possibles du cavalier.
-     * @return a List with all possible positions
+     * @return a List with all possible positions.
      */
     public List<Position> deplacementPossible(){
         List<Position> result = new ArrayList<Position>();
@@ -58,7 +61,7 @@ public class KnightProblem {
     }
 
     /**
-     * Affiche toutes les valeurs du tableau
+     * Affiche toutes les valeurs du tableau.
      */
     public void printChessBoard(){
         for(int i = this.tableLenght-1; i >= 0; i--){
@@ -72,7 +75,7 @@ public class KnightProblem {
     /**
      * Cherche la dernière position du cavalier
      * @return une Position qui correspond à celle précédente du cavalier s'il n'y en a 
-     * pas alors elle retourne une Position(-1,-1)
+     * pas alors elle retourne une Position(-1,-1).
      */
     public Position lastPosition(){
         Position result = new Position(-1,-1);
@@ -105,7 +108,7 @@ public class KnightProblem {
     }
 
     /**
-     * @return La valeur de l'attribut numberOfSolution
+     * @return La valeur de l'attribut numberOfSolution.
      */
     public int getNumberOfSolution(){
         return this.numberOfSolution;
@@ -118,7 +121,7 @@ public class KnightProblem {
         this.chessBoard[this.position.getY()][this.position.getX()] = this.count;
     }
     /**
-     * Trouve les solutions du problème du cavalier
+     * Trouve les solutions du problème du cavalier.
      */
     public void findKnightSolution(){
         if(this.count == this.tableLenght*this.tableLenght){
@@ -139,8 +142,8 @@ public class KnightProblem {
     }
     
     /**
-     * Trouve une solution au problème du cavalier
-     * @return true quand une solution est trouvée
+     * Trouve une solution au problème du cavalier.
+     * @return true quand une solution est trouvée.
      */
     public boolean findOneKnightSolution(){
         if(this.count == this.tableLenght*this.tableLenght){
@@ -153,8 +156,8 @@ public class KnightProblem {
                 }else{
                     for(Position futurePosition : possibleMouvement){
                         this.goToThisPosition(futurePosition);
-                        boolean trouve = this.findOneKnightSolution();
-                        if(trouve)
+                        boolean findASolution = this.findOneKnightSolution();
+                        if(findASolution)
                             return true;
                     }
                     this.backToLastPosition();
