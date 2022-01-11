@@ -9,7 +9,7 @@ There are no test files or a Main class therefore you have to create :
 
 1. Position Object which takes two parameters(int values) that point to the starting position of the knight.
 
-2. KnightProblem Obkect wich takes two parameters, this Position Object and a value(int) which is the size of the table.
+2. KnightProblem Object wich takes two parameters, this Position Object and a value(int) which is the size of the table.
 
 There are two methods(without parameters) to find one or more solutions :
 
