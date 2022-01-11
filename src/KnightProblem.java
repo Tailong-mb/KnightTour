@@ -44,9 +44,9 @@ public class KnightProblem {
         List<Position> result = new ArrayList<Position>();
         int finalX;
         int finalY;
-        for(KnightMovePossibilities test : this.possibleMoves){
-            finalX = this.position.getX() + test.getX();
-            finalY = this.position.getY() + test.getY();
+        for(KnightMovePossibilities futurePosition : this.possibleMoves){
+            finalX = this.position.getX() + futurePosition.getX();
+            finalY = this.position.getY() + futurePosition.getY();
             if(finalX < 0 || finalX >= this.tableLenght || finalY < 0 || finalY >= this.tableLenght || this.chessBoard[finalY][finalX] != -1){
                 continue;
             }else{
@@ -111,6 +111,12 @@ public class KnightProblem {
         return this.numberOfSolution;
     }
 
+    public void goToThisPosition(Position futurePosition){
+        this.position.setX(futurePosition.getX());
+        this.position.setY(futurePosition.getY());
+        this.count += 1;
+        this.chessBoard[this.position.getY()][this.position.getX()] = this.count;
+    }
     /**
      * Trouve les solutions du problème du cavalier
      */
@@ -123,11 +129,8 @@ public class KnightProblem {
                 if(possibleMouvement.isEmpty()){
                     this.backToLastPosition();
                 }else{
-                    for(Position test : possibleMouvement){
-                        this.position.setX(test.getX());
-                        this.position.setY(test.getY());
-                        this.count += 1;
-                        this.chessBoard[this.position.getY()][this.position.getX()] = this.count;
+                    for(Position futurePosition : possibleMouvement){
+                        this.goToThisPosition(futurePosition);
                         this.findKnightSolution();
                     }
                     this.backToLastPosition();
@@ -136,21 +139,20 @@ public class KnightProblem {
     }
     
     /**
-     * Trouve une solution du problème du cavalier
+     * Trouve une solution au problème du cavalier
+     * @return true quand une solution est trouvée
      */
     public boolean findOneKnightSolution(){
         if(this.count == this.tableLenght*this.tableLenght){
+            this.numberOfSolution = 1;
             return true;
         }else{
             List<Position> possibleMouvement = this.deplacementPossible();
                 if(possibleMouvement.isEmpty()){
                     this.backToLastPosition();
                 }else{
-                    for(Position test : possibleMouvement){
-                        this.position.setX(test.getX());
-                        this.position.setY(test.getY());
-                        this.count += 1;
-                        this.chessBoard[this.position.getY()][this.position.getX()] = this.count;
+                    for(Position futurePosition : possibleMouvement){
+                        this.goToThisPosition(futurePosition);
                         boolean trouve = this.findOneKnightSolution();
                         if(trouve)
                             return true;
