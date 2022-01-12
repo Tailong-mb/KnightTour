@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 
-public class KnightProblem {
+public class KnightTour {
     //Attributs
     private Position position;
     private int tableLenght;
@@ -20,7 +20,7 @@ public class KnightProblem {
                                                                         KnightMovePossibilities.MOVESEPT,
                                                                         KnightMovePossibilities.MOVEHUIT);                                                                       
     //Constructeur
-    public KnightProblem(Position position, int tablelenght){
+    public KnightTour(Position position, int tablelenght){
         if(position.getX() >= tablelenght || position.getY() >= tablelenght){
             throw new IllegalArgumentException("Out of the chessboard");
         }
