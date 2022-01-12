@@ -21,7 +21,7 @@ public class KnightTour {
                                                                         KnightMovePossibilities.MOVEHUIT);                                                                       
     //Constructeur
     public KnightTour(Position position, int tablelenght){
-        if(position.getX() >= tablelenght || position.getY() >= tablelenght){
+        if(position.getX() >= tablelenght || position.getY() >= tablelenght || position.getY() < 0 || position.getX() < 0){
             throw new IllegalArgumentException("Out of the chessboard");
         }
         this.position = new Position(position.getX(),position.getY());
