@@ -3,9 +3,6 @@ public class Position {
     private int y;
 
     public Position(int x, int y){
-        if(x < 0 || y < 0){
-            throw new IllegalArgumentException();
-        }
         this.x = x;
         this.y = y;
     }
