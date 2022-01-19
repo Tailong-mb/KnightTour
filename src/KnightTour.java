@@ -35,7 +35,7 @@ public class KnightTour {
         this.chessBoard[this.position.getY()][this.position.getX()] = 1;
         this.count = 1;
         this.numberOfSolution = 0;
-    }a
+    }
 
     //Methodes
 
