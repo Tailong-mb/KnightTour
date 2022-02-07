@@ -19,7 +19,7 @@ Then you launch it with 3 arguments, the initial position of the knight (x,y) an
 $ java KnightTour 1 1 5
 ```
 
-If there is a solution the display will loke like this :
+If there is a solution the display will look like this :
 
 ```
 Number of solutions : 304
