@@ -97,25 +97,6 @@ public class KnightTour {
     }
 
     /**
-     * @return La valeur de l'attribut numberOfSolution.
-     */
-    public int getNumberOfSolution(){
-        return this.numberOfSolution;
-    }
-    
-    /**
-     * Affiche toutes les valeurs du tableau.
-     */
-    public void printChessBoard(){
-        for(int i = this.tableLenght-1; i >= 0; i--){
-            for(int j = 0; j < this.tableLenght; j++){
-                System.out.print(this.chessBoard[i][j] + " ");
-            }
-                System.out.print("\n");
-        }
-    }
-
-    /**
      * Trouve les solutions du problème du cavalier.
      */
     public void findKnightSolution(){
@@ -159,5 +140,43 @@ public class KnightTour {
             }
         }
         return false;
+    }
+
+    /**
+     * @return La valeur de l'attribut numberOfSolution.
+     */
+    public int getNumberOfSolution(){
+        return this.numberOfSolution;
+    }
+    
+    /**
+     * Affiche toutes les valeurs du tableau.
+     */
+    public void printChessBoard(){
+        for(int i = this.tableLenght-1; i >= 0; i--){
+            for(int j = 0; j < this.tableLenght; j++){
+                System.out.print(String.format("%02d ",this.chessBoard[i][j]));
+            }
+                System.out.print("\n");
+        }
+    }
+    
+    public static void main (String[] args) throws Exception{
+        if(args.length != 3){
+            throw new IllegalArgumentException();
+        } else {
+            Position position = new Position(Integer.parseInt(args[0])-1,Integer.parseInt(args[1])-1);
+            KnightTour knight = new KnightTour(position, Integer.parseInt(args[2]));
+            knight.findKnightSolution();
+            int result = knight.getNumberOfSolution();
+            if(result == 0){
+                System.out.println(" 0 solution");
+            } else {
+                System.out.println(String.format("Number of solution : %d\nThis is one solution :",result));
+                knight.findOneKnightSolution();
+                knight.printChessBoard();
+            }
+        }
+
     }
 }
