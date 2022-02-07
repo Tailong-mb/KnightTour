@@ -5,14 +5,28 @@
 It is a solution to this problem.
 The algorithm uses recursion and backtracking.
 
-There are no test files or a Main class therefore you have to create :
+## How to use it
 
-1. Position Object which takes two parameters(int values) that point to the starting position of the knight.
+First of all you have to :
 
-2. KnightTour Object which takes two parameters, this Position Object and a value(int) which is the size of the chessboard.
+```
+$ javac KnightTour.java
+```
 
-There are two methods(without parameters) to find one or more solutions :
+Then you launch it with 3 arguments, the initial position of the knight (x,y) and the length of the chessboard :
 
-1. findKnightSolution() looks for all possible solutions and then we can have the number of solution found with getNumberOfSolution().
+```
+$ java KnightTour 1 1 5
+```
 
-2. findOneKnightSolution() looks for one solution, return true if this method find one, else false. You can print this solution with printChessBoard().
+If there is a solution the display will loke like this :
+
+```
+Number of solutions : 304
+This is one solution :
+25 18 03 12 23
+08 13 24 17 04
+19 02 07 22 11
+14 09 20 05 16
+01 06 15 10 21
+```
