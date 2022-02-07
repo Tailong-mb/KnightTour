@@ -172,7 +172,7 @@ public class KnightTour {
             if(result == 0){
                 System.out.println(" 0 solution");
             } else {
-                System.out.println(String.format("Number of solution : %d\nThis is one solution :",result));
+                System.out.println(String.format("Number of solutions : %d\nThis is one solution :",result));
                 knight.findOneKnightSolution();
                 knight.printChessBoard();
             }
