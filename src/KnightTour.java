@@ -3,14 +3,14 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class KnightTour {
-    //Attributs
+    //Attributes
     private Position position;
     private int tableLenght;
     private int [][] chessBoard;
     private int count;
     private int numberOfSolution;
 
-    //Deplacement du cavalier possible :
+    //Displacement of the rider possible:
     public static final List<KnightMovePossibilities> possibleMoves = Arrays.asList(KnightMovePossibilities.MOVEUN, 
                                                                         KnightMovePossibilities.MOVEDEUX,
                                                                         KnightMovePossibilities.MOVETROIS,
@@ -19,7 +19,7 @@ public class KnightTour {
                                                                         KnightMovePossibilities.MOVESIX,
                                                                         KnightMovePossibilities.MOVESEPT,
                                                                         KnightMovePossibilities.MOVEHUIT);                                                                       
-    //Constructeur
+    //Constructor
     public KnightTour(Position position, int tablelenght){
         if(position.getX() >= tablelenght || position.getY() >= tablelenght || position.getY() < 0 || position.getX() < 0){
             throw new IllegalArgumentException("Out of the chessboard");
@@ -37,10 +37,8 @@ public class KnightTour {
         this.numberOfSolution = 0;
     }
 
-    //Methodes
-
     /**
-     * Methode qui vérifie tous les mouvements possibles du cavalier.
+     * Method that checks all possible movements of the rider.
      * @return a List with all possible positions.
      */
     public List<Position> deplacementPossible(){
@@ -59,9 +57,9 @@ public class KnightTour {
     }
 
     /**
-     * Cherche la dernière position du cavalier
-     * @return une Position qui correspond à celle précédente du cavalier s'il n'y en a 
-     * pas alors elle retourne une Position(-1,-1).
+     * Finds the last position of the rider
+     * @returns a Position that matches the previous one of the rider if there is none
+     * If there is no position then it returns a Position(-1,-1).
      */
     public Position lastPosition(){
         Position result = new Position(-1,-1);
@@ -77,7 +75,7 @@ public class KnightTour {
     }
 
     /**
-     * Ne prend aucun paramètre, bouge le cavalier à sa position précédente.
+     * Does not take any parameters, moves the jumper to its previous position.
      */
     public void backToLastPosition(){
         Position lastPosition = this.lastPosition();
@@ -89,6 +87,10 @@ public class KnightTour {
         }
     }
 
+    /**
+     * Move to the knight to a Position.
+     * @param futurePosition the next position.
+     */
     public void goToThisPosition(Position futurePosition){
         this.position.setX(futurePosition.getX());
         this.position.setY(futurePosition.getY());
@@ -97,7 +99,7 @@ public class KnightTour {
     }
 
     /**
-     * Trouve les solutions du problème du cavalier.
+     * Find the solutions to the KnightTour problem.
      */
     public void findKnightSolution(){
         if(this.count == this.tableLenght*this.tableLenght){
@@ -118,8 +120,8 @@ public class KnightTour {
     }
     
     /**
-     * Trouve une solution au problème du cavalier.
-     * @return true quand une solution est trouvée.
+     * Find a solution to the KnightTour problem.
+     * @return true when a solution is found.
      */
     public boolean findOneKnightSolution(){
         if(this.count == this.tableLenght*this.tableLenght){
@@ -143,14 +145,14 @@ public class KnightTour {
     }
 
     /**
-     * @return La valeur de l'attribut numberOfSolution.
+     * @return the value of numberOfSolution.
      */
     public int getNumberOfSolution(){
         return this.numberOfSolution;
     }
     
     /**
-     * Affiche toutes les valeurs du tableau.
+     * Print the chessBoard.
      */
     public void printChessBoard(){
         for(int i = this.tableLenght-1; i >= 0; i--){
@@ -160,7 +162,12 @@ public class KnightTour {
                 System.out.print("\n");
         }
     }
-    
+
+    /**
+     * main class :
+     * @param args , tree values, the position of the knight in x then in y and finally the size of the chessboard.
+     * @throws Exception
+     */
     public static void main (String[] args) throws Exception{
         if(args.length != 3){
             throw new IllegalArgumentException();
